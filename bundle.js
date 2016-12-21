@@ -57,9 +57,9 @@
 	
 	var _reactDom = __webpack_require__(/*! react-dom */ 32);
 	
-	var _AwesomeComponent = __webpack_require__(/*! ./AwesomeComponent.jsx */ 179);
+	var _TableComponent = __webpack_require__(/*! ./TableComponent.jsx */ 178);
 	
-	var _AwesomeComponent2 = _interopRequireDefault(_AwesomeComponent);
+	var _TableComponent2 = _interopRequireDefault(_TableComponent);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -87,9 +87,9 @@
 	        _react2.default.createElement(
 	          'p',
 	          null,
-	          ' Hello React!'
+	          'From index.jsx'
 	        ),
-	        _react2.default.createElement(_AwesomeComponent2.default, null)
+	        _react2.default.createElement(_TableComponent2.default, null)
 	      );
 	    }
 	  }]);
@@ -97,6 +97,7 @@
 	  return App;
 	}(_react2.default.Component);
 	
+	_TableComponent2.default.defaultProps = { row0: "World", row1: " ", row2: " ", row3: " ", row4: " ", row5: " ", row6: " ", row7: " " };
 	(0, _reactDom.render)(_react2.default.createElement(App, null), document.getElementById('app'));
 
 /***/ },
@@ -22038,11 +22039,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../process/browser.js */ 3)))
 
 /***/ },
-/* 178 */,
-/* 179 */
-/*!*********************************************!*\
-  !*** ./src/client/app/AwesomeComponent.jsx ***!
-  \*********************************************/
+/* 178 */
+/*!*******************************************!*\
+  !*** ./src/client/app/TableComponent.jsx ***!
+  \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22065,54 +22065,184 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var AwesomeComponent = function (_React$Component) {
-	  _inherits(AwesomeComponent, _React$Component);
+	//import PopupComponent from './PopupComponent.jsx';
 	
-	  function AwesomeComponent(props) {
-	    _classCallCheck(this, AwesomeComponent);
+	var TableComponent = function (_React$Component) {
+	  _inherits(TableComponent, _React$Component);
 	
-	    var _this = _possibleConstructorReturn(this, (AwesomeComponent.__proto__ || Object.getPrototypeOf(AwesomeComponent)).call(this, props));
+	  function TableComponent(props) {
+	    _classCallCheck(this, TableComponent);
 	
-	    _this.state = { likesCount: 0 };
-	    _this.onLike = _this.onLike.bind(_this);
+	    var _this = _possibleConstructorReturn(this, (TableComponent.__proto__ || Object.getPrototypeOf(TableComponent)).call(this, props));
+	
+	    _this.onClickEvent = _this.onClickEvent.bind(_this);
 	    return _this;
 	  }
 	
-	  _createClass(AwesomeComponent, [{
-	    key: 'onLike',
-	    value: function onLike() {
-	      var newLikesCount = this.state.likesCount + 1;
-	      this.setState({ likesCount: newLikesCount });
+	  _createClass(TableComponent, [{
+	    key: 'onClickEvent',
+	    value: function onClickEvent(ev) {
+	      //let { value } = ev.target;
+	      //this.setState({ name: value });
+	      console.log('The link was clicked.');
+	      console.log(ev); //target = correlating what was clicked
+	      //Pass the row number to update teh proper prop value and start the PopupComponent
+	      //<StoreComponent ref={(storeComponent) => { this._storeComponent = storeComponent; }} />
+	      //<StoreComponent ref={(storeComponent) => {storeComponent.handleClickEvent(ev);}} />
+	      //this._storeComponent.handleClickEvent(ev);
+	      //<StoreComponent handleClickEvent={ev}/>
+	      //    PopupComponent.defaultProps = { row: ev};
+	      //<PopupComponent />
+	
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+	
 	      return _react2.default.createElement(
-	        'div',
+	        'table',
 	        null,
-	        'Likes : ',
 	        _react2.default.createElement(
-	          'span',
-	          null,
-	          this.state.likesCount
-	        ),
-	        _react2.default.createElement(
-	          'div',
+	          'tbody',
 	          null,
 	          _react2.default.createElement(
-	            'button',
-	            { onClick: this.onLike },
-	            'Like Me'
+	            'tr',
+	            { onClick: function onClick() {
+	                return _this2.onClickEvent("0");
+	              } },
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              '9:00-10:00'
+	            ),
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              this.props.row0
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'tr',
+	            { onClick: function onClick() {
+	                return _this2.onClickEvent("1");
+	              } },
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              '10:00-11:00'
+	            ),
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              this.props.row1
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'tr',
+	            { onClick: function onClick() {
+	                return _this2.onClickEvent("2");
+	              } },
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              '11:00-12:00'
+	            ),
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              this.props.row2
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'tr',
+	            { onClick: function onClick() {
+	                return _this2.onClickEvent("3");
+	              } },
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              '12:00-1:00'
+	            ),
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              this.props.row3
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'tr',
+	            { onClick: function onClick() {
+	                return _this2.onClickEvent("4");
+	              } },
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              '1:00-2:00'
+	            ),
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              this.props.row4
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'tr',
+	            { onClick: function onClick() {
+	                return _this2.onClickEvent("5");
+	              } },
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              '2:00-3:00'
+	            ),
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              this.props.row5
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'tr',
+	            { onClick: function onClick() {
+	                return _this2.onClickEvent("6");
+	              } },
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              '3:00-4:00'
+	            ),
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              this.props.row6
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'tr',
+	            { onClick: function onClick() {
+	                return _this2.onClickEvent("7");
+	              } },
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              '4:00-5:00'
+	            ),
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              this.props.row7
+	            )
 	          )
 	        )
 	      );
 	    }
 	  }]);
 	
-	  return AwesomeComponent;
+	  return TableComponent;
 	}(_react2.default.Component);
 	
-	exports.default = AwesomeComponent;
+	exports.default = TableComponent;
 
 /***/ }
 /******/ ]);
